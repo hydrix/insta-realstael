@@ -5,8 +5,10 @@ import mongoose from "mongoose";
 
 export default function Home() {
   return (
-    <div>
-      <Signup />
+    <div className="bg-black">
+      <div className="container">
+        <Signup />
+      </div>
     </div>
   );
 }
