@@ -1,13 +1,13 @@
-import Image from "next/image";
 import "./globals.css";
-import Signup from "./signup/page";
+import Signin from "./signin/page";
 import mongoose from "mongoose";
+import Signup from "./signup/page";
+
 
 export default function Home() {
   return (
     <div className="bg-black">
       <div className="container">
-        <Signup />
       </div>
     </div>
   );
