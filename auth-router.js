@@ -6,6 +6,8 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
+PORT = 3000;
+
 const app = express();
 
 app.use(express.json());
@@ -17,6 +19,7 @@ app.use((req, res) => {
     
 })
 
-app.listen(async () => {
+app.listen(PORT, async () => {
   await mongoose.connect(process.env.DATABASE_URL);
+  console.log(`listening on port ${PORT}`);
 });
