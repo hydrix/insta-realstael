@@ -1,10 +1,15 @@
+"use client";
 import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import "../globals.css";
+import axios from "axios";
+import { useRouter } from "next/navigation";
+import { toast } from "react-toastify";
 
 
 const Signup = () => {
+  const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [FullName, setFullName] = useState("");
@@ -21,6 +26,7 @@ const Signup = () => {
   const handleUsernameChange = (event) => {
     setUsername(event.target.value);
   };
+
   return (
     <div className="bg-black w-full h-full">
       <div className="flex justify-center items-center flex-col ">
@@ -36,7 +42,7 @@ const Signup = () => {
             <p className="text-gray-400 font-bold text-center">
               Sign up to see photos and videos <br /> from your friends.
             </p>
-            <button className="bg-[#0099ff] hover:bg-[#0066ff] w-64 h-8 text-white rounded-md my-4">
+            <button className="bg-[#0099ff] hover:bg-[#0066ff] w-64 h-8 text-white rounded-md my-4 ">
               Log in with Facebook
             </button>
             <div className="flex flex-col">
@@ -46,34 +52,36 @@ const Signup = () => {
                 <div className="border-t w-[111px] mt-3">o</div>
               </div>
               <div className="flex flex-col gap-3 ">
-                <input
-                  type="text"
-                  placeholder="Mobile number or Email"
-                  className="border-[#303030] border rounded-sm p-2 bg-[#121212] font-normal text-sm"
-                  value={email}
-                  onChange={handleEmailChange}
-                />
-                <input
-                  type="text"
-                  placeholder="Password"
-                  className="border-[#303030] border rounded-sm p-2 bg-[#121212] font-normal text-sm"
-                  value={password}
-                  onChange={handlePasswordChange}
-                />
-                <input
-                  type="text"
-                  placeholder="Full name"
-                  className="border-[#303030] border rounded-sm p-2 bg-[#121212] font-normal text-sm"
-                  value={FullName}
-                  onChange={handleFullNameChange}
-                />
-                <input
-                  type="text"
-                  placeholder="Usename"
-                  className="border-[#303030] border rounded-sm p-2 bg-[#121212] font-normal text-sm"
-                  value={username}
-                  onChange={handleUsernameChange}
-                  />
+                <div className="flex flex-col gap-3 ">
+                  {[
+                    {
+                      name: "email",
+                      placeholder: "Mobile number or Email",
+                      type: "text",
+                    },
+                    {
+                      name: "password",
+                      placeholder: "Password",
+                      type: "password",
+                    },
+                    {
+                      name: "fullName",
+                      placeholder: "Full name",
+                      type: "text",
+                    },
+                    { name: "username", placeholder: "Username", type: "text" },
+                  ].map((field, index) => (
+                    <input
+                      key={index}
+                      type={field.type}
+                      name={field.name}
+                      placeholder={field.placeholder}
+                      className="border-[#303030] border rounded-sm p-2 bg-[#121212] font-normal text-sm focus:outline-none text-white"
+                      value={formData[field.name]}
+                      onChange={handleChange}
+                    />
+                  ))}
+                </div>
               </div>
               <div className="text-gray-400 font-normal text-xs text-center flex flex-col gap-4 pt-4">
                 <p>
