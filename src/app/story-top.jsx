@@ -4,8 +4,10 @@ import Link from "next/link";
 
 const StoryTop = () => {
     return (
-        <div>
+        <div className="flex">
             
         </div>
     )
 }
+
+export default StoryTop

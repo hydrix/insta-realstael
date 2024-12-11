@@ -113,20 +113,24 @@ const Signup = () => {
           </div>
           <p className="text-white mt-4">Get the app.</p>
           <div className="flex gap-2 mt-4 mb-10">
-            <Image
-              src="/applestore.png"
-              width={160}
-              height={50}
-              alt="a"
-              className=" h-[45px]"
-            />
-            <Image
-              src="/playstore.png"
-              width={160}
-              height={50}
-              alt="a"
-              className="h-[45px]"
-            />
+            <Link href="https://apps.apple.com/us/app/instagram/id389801252">
+              <Image
+                src="/applestore.png"
+                width={160}
+                height={50}
+                alt="a"
+                className=" h-[45px]"
+              />
+            </Link>
+            <Link href="https://play.google.com/store/search?q=instagram&c=apps&hl=en">
+              <Image
+                src="/playstore.png"
+                width={160}
+                height={50}
+                alt="a"
+                className="h-[45px]"
+              />
+            </Link>
           </div>
         </div>
       </div>

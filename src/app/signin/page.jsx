@@ -39,12 +39,12 @@ export default function Signin() {
               <input
                 type="text"
                 placeholder="Phone number, username, or email"
-                className="bg-black w-72 border p-2 rounded"
+                className="bg-black w-72 border p-2 rounded focus:outline-none text-white"
               />
               <input
                 type="text"
                 placeholder="Password"
-                className="bg-black w-72 border p-2 rounded"
+                className="bg-black w-72 border p-2 rounded focus:outline-none text-white"
               />
               <button className="bg-[#0099ff] hover:bg-[#0066ff] w-72 h-8 text-white rounded-md">
                 Log in
@@ -69,25 +69,31 @@ export default function Signin() {
               <p className="pt-5">Forget password?</p>
               <div className="flex text-white pt-10">
                 <p>Don`t have an account?</p>
-                <p className="text-[#0066ff] pl-2">Sign up</p>
+                <Link href="http://localhost:3000/signup">
+                  <p className="text-[#0066ff] pl-2">Sign up</p>
+                </Link>
               </div>
               <p className="pt-10">Get the app</p>
             </div>
             <div className="flex gap-2 mt-4">
-              <Image
-                src="/applestore.png"
-                width={160}
-                height={50}
-                alt="a"
-                className=" h-[45px]"
-              />
-              <Image
-                src="/playstore.png"
-                width={160}
-                height={50}
-                alt="a"
-                className="h-[45px]"
-              />
+              <Link href="https://apps.apple.com/us/app/instagram/id389801252">
+                <Image
+                  src="/applestore.png"
+                  width={160}
+                  height={50}
+                  alt="a"
+                  className=" h-[45px]"
+                />
+              </Link>
+              <Link href="https://play.google.com/store/search?q=instagram&c=apps&hl=en">
+                <Image
+                  src="/playstore.png"
+                  width={160}
+                  height={50}
+                  alt="a"
+                  className="h-[45px]"
+                />
+              </Link>
             </div>
           </div>
         </div>

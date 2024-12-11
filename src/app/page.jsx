@@ -2,7 +2,7 @@ import "./globals.css";
 import Image from "next/image";
 import Link from "next/link";
 import { LiaFacebookMessenger } from "react-icons/lia";
-
+import StoryTop from "./story-top";
 const Home = () => {
   return (
     <div className="bg-black w-full h-screen">
@@ -27,7 +27,44 @@ const Home = () => {
               fill="#F7F9F9"
             />
           </svg>
-          <LiaFacebookMessenger color="#ffffff" className="w-[23px] h-[23px] " />
+          <LiaFacebookMessenger
+            color="#ffffff"
+            className="w-[23px] h-[23px] "
+          />
+        </div>
+        <div className="flex w-auto ">
+          <div className="relative">
+            <Image
+              src="/replace.png"
+              width={68}
+              height={68}
+              alt="a"
+              className="rounded-full p-0.5 border-[3px] border-[#00ff00]"
+            />
+            <div className=" absolute top-10 right-0" >
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M12 1.5C6.20101 1.5 1.5 6.20101 1.5 12C1.5 17.799 6.20101 22.5 12 22.5C17.799 22.5 22.5 17.799 22.5 12C22.5 6.20101 17.799 1.5 12 1.5Z"
+                  fill="#0098FD"
+                />
+                <path
+                  d="M12 1.5C6.20101 1.5 1.5 6.20101 1.5 12C1.5 17.799 6.20101 22.5 12 22.5C17.799 22.5 22.5 17.799 22.5 12C22.5 6.20101 17.799 1.5 12 1.5Z"
+                  stroke="#0C1014"
+                  stroke-width="3"
+                />
+                <path
+                  d="M11 15C11 15.5523 11.4477 16 12 16C12.5523 16 13 15.5523 13 15V13H15C15.5523 13 16 12.5523 16 12C16 11.4477 15.5523 11 15 11H13V9C13 8.44772 12.5523 8 12 8C11.4477 8 11 8.44772 11 9V11H9C8.44772 11 8 11.4477 8 12C8 12.5523 8.44772 13 9 13H11V15Z"
+                  fill="white"
+                />
+              </svg>
+            </div>
+          </div>
         </div>
       </div>
     </div>
