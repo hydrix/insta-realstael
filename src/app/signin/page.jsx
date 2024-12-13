@@ -1,8 +1,13 @@
+"use client";
 import { FaFacebook } from "react-icons/fa6";
 import Image from "next/image";
 import Link from "next/link";
 import "../globals.css";
-
+import axios from "axios";
+import { useContext } from "react";
+import { UserContext } from "../contexts/user-context";
+import { redirect } from "next/navigation";
+import { toast } from "react-toastify";
 
 export default function Signin() {
   return (

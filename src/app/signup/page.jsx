@@ -8,11 +8,6 @@ import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
 
 const Signup = () => {
-  const [credential, setCredential] = useState("");
-  const [password, setPassword] = useState("");
-  const [fullName, setFullName] = useState(""); // Fixed variable name to match casing
-  const [username, setUsername] = useState("");
-  const router = useRouter(); // Initialize router for navigation
 
   const handleSubmit = () => {
     axios
@@ -56,35 +51,66 @@ const Signup = () => {
                   <p className="text-white px-5">OR</p>
                   <div className="border-t w-[111px] mt-3"></div>
                 </div>
-                <div className="flex flex-col gap-3 ">
-                  <input
-                    type="text"
-                    placeholder="Mobile number or Email"
-                    className="border-[#303030] border rounded-sm p-2 bg-[#121212] font-normal text-sm text-white focus:outline-none"
-                    value={credential}
-                    onChange={(e) => setCredential(e.target.value)}
-                  />
-                  <input
-                    type="password" // Updated to use password type
-                    placeholder="Password"
-                    className="border-[#303030] border rounded-sm p-2 bg-[#121212] font-normal text-sm text-white focus:outline-none"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                  />
-                  <input
-                    type="text"
-                    placeholder="Full name"
-                    className="border-[#303030] border rounded-sm p-2 bg-[#121212] font-normal text-sm text-white focus:outline-none"
-                    value={fullName}
-                    onChange={(e) => setFullName(e.target.value)}
-                  />
-                  <input
-                    type="text"
-                    placeholder="Username"
-                    className="border-[#303030] border rounded-sm p-2 bg-[#121212] font-normal text-sm text-white focus:outline-none"
-                    value={username}
-                    onChange={(e) => setUsername(e.target.value)}
-                  />
+                <div>
+                  <form
+                    onSubmit={(e) => {
+                      e.preventDefault();
+                      const credential = e.target.credential.value;
+                      const password = e.target.password.value;
+                      const fullname = e.target.fullname.value;
+                      const username = e.target.username.value;
+
+                      axios
+                        .post(`${process.env.NEXT_PUBLIC_API}/signup`, {
+                          credential,
+                          password,
+                          fullname,
+                          username,
+                        })
+                        .then((res) => {
+                          toast.success("Та амжилттай бүртгүүллээ!");
+                          router.push("/signin");
+                        })
+                        .catch((err) => {
+                          console.error(err);
+                          toast.error(err.response.data.message);
+                        });
+                    }}
+                    className="flex flex-col gap-4"
+                  >
+                    <label>
+                      <input
+                        type="text"
+                        name="credential"
+                        placeholder="Mobile number or Email"
+                        className="border-[#303030] border rounded-sm p-2 pr-24 bg-[#121212] font-normal text-sm text-white focus:outline-none"
+                      />
+                    </label>
+                    <label>
+                      <input
+                        type="password" // Updated to use password type
+                        placeholder="Password"
+                        className="border-[#303030] border rounded-sm p-2 pr-24 bg-[#121212] font-normal text-sm text-white focus:outline-none"
+                        name="password"
+                      />
+                    </label>
+                    <label>
+                      <input
+                        type="text"
+                        name="fullname"
+                        placeholder="Full name"
+                        className="border-[#303030] border rounded-sm p-2 pr-24 bg-[#121212] font-normal text-sm text-white focus:outline-none"
+                      />
+                    </label>
+                    <label>
+                      <input
+                        type="text"
+                        name="username"
+                        placeholder="Username"
+                        className="border-[#303030] border rounded-sm p-2 pr-24 bg-[#121212] font-normal text-sm text-white focus:outline-none"
+                      />
+                    </label>
+                  </form>
                 </div>
                 <div className="text-gray-400 font-normal text-xs text-center flex flex-col gap-4 pt-4">
                   <p>
@@ -97,7 +123,7 @@ const Signup = () => {
                   </p>
                 </div>
                 <button
-                  onClick={handleSubmit} // Trigger form submission
+                  // Trigger form submission
                   className="bg-[#0099ff] hover:bg-[#0066ff] w-64 h-8 text-white rounded-md my-4"
                 >
                   Sign up
